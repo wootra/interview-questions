@@ -29,7 +29,7 @@ const getUsers = async ({
 		.join('&');
 	const response = await fetch(`/api/users?` + queries);
 	const data = await response.json();
-	return data as UserInfo[];
+	return data.data as UserInfo[];
 };
 
 const addUsers = async (data: object) => {
@@ -41,6 +41,7 @@ const addUsers = async (data: object) => {
 		},
 	});
 };
+type InputType = { occupation?: string; school?: string; name: string; age: number };
 
 const App = () => {
 	const [limit, setLimit] = useState(3);
@@ -58,11 +59,31 @@ const App = () => {
 		mutationFn: addUsers,
 	});
 	const users = query.data as UserInfo[];
+	const validation = (data: InputType) => {
+		if (!data.name || !data.age) {
+			alert('name and age is required');
+			return false;
+		}
+		if (data.name.length < 3) {
+			alert('name need to be more than 2 characters');
+			return false;
+		}
+		if (data.age < 18) {
+			alert('age should be 18 or older than 18');
+			return false;
+		}
+		if (data.age > 100) {
+			alert('please call us. We have a senior friendly service.');
+			return false;
+		}
+		return true;
+	};
 	const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 		e.preventDefault();
 		const form = e.currentTarget;
 		const formData = new FormData(form);
-		const data = Object.fromEntries(formData.entries());
+		const data = Object.fromEntries(formData.entries()) as unknown as InputType;
+		if (!validation(data)) return;
 		await mutateAsync(data);
 		await query.refetch();
 	};

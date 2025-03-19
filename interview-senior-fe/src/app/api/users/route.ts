@@ -64,11 +64,15 @@ export async function GET(request: NextRequest) {
 		filtered = filtered.filter(user => user.age <= Number(searchAgeUnder));
 	}
 	if (searchOccupation) {
-		filtered = filtered.filter(user => user.occupation?.label.includes(searchOccupation.toString()));
+		filtered = filtered.filter(user =>
+			user.occupation?.label.toLowerCase().includes(searchOccupation.toString().toLowerCase())
+		);
 	}
 	if (searchSchool) {
-		filtered = filtered.filter(user => user.school?.label.includes(searchSchool.toString()));
+		filtered = filtered.filter(user =>
+			user.school?.label.toLowerCase().includes(searchSchool.toString().toLowerCase())
+		);
 	}
 	await new Promise(resolve => setTimeout(resolve, 3000));
-	return Response.json({ data: filtered.slice(0, limit) });
+	return Response.json({ data: filtered.reverse().slice(0, limit) });
 }

@@ -1,32 +1,45 @@
-## Getting Started
-
-First, run the development server:
+# Getting Started
 
 ```bash
-npm install
+git clone https://github.com/wootra/interview-questions.git
+```
+
+## First things first...
+
+```bash
+cd interview-{title}-fe
+npm i
+```
+
+## Next, run the development server:
+
+```bash
 npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-
 ## Questions
 
-this app has few issues. investigate why it is not working, and fix it.
+This app has some issues. Start investigating why it's not working. Feel free to ask questions, google, or talk out loud.
 
-1. `users` GET service call fails. what is the issue? and what is a minimal solution?
-2. rendering is failing. what is the root cause and what do you think is the best solution?
-3. the search section and add new section is visually not aligned. please check CSS and make it aligned in column direction
-4. Please take a few minutes and share your opinion on the UX of the app. 
-- 4a: What are some things you would do to improve the overall UX?
-- 4b: See if you can implement one of these UX improvements
-5. search is working, but it is case sensitive. make it case "insensitive". (interview-senior-fe/src/app/api/users/route.ts)
-6. add new user is working, but when new user is added, it is not showing on the list, but old users are shown. make the latest users shown rather than older users.
-7. add a new user is working, but we need a validation. Add a validation logic for 
-  - no name, no age -> show "name and age is required"
-  - name length is under 2 characters -> show "name need to be more than 2 characters"
-  - when age is under 18 -> show "age should be 18 or older than 18
-  - when age is over 100 -> show "please call us. We have a senior friendly service."
+1. The `users` GET service call isn't working as expected. What is the issue? At a miniumum what can be done to resolve this issue?
+
+- a. Rendering user information doesn't appear to be working. What is the root cause and what do you think is the best solution?
+
+2. The search section and add new section is visually not aligned. please check CSS and make it aligned in column direction
+3. Please take a few minutes and share your observations on the UX.
+
+- a: What are some things you would do to improve the UX?
+- b: Implement one of your suggested UX improvements
+
+4. Search is functional, but it is case-sensitive. Can you broaden the search to make it case insensitive. (interview-senior-fe/src/app/api/users/route.ts)
+5. Adding users is working, however newly added users are not showing in the list, make the latest users shown rather than older users.
+6. New user creation is working but doesn't seem to have any validation. Can you add validation logic for
+
+- Name field is empty, No age is provided -> show "name and age is required"
+- Name length is under 2 characters -> show "name need to be more than 2 characters"
+- when Age is under 18 -> show "age should be 18 or older than 18
 
 ## Bonus
 

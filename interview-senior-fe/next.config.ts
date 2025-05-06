@@ -1,7 +1,20 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  images: {
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "fonts.googleapis.com",
+      },
+      {
+        protocol: "https",
+        hostname: "fonts.gstatic.com",
+      },
+    ],
+  },
+  optimizeFonts: true,
+  experimental: {},
 };
 
 export default nextConfig;

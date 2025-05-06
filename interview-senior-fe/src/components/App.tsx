@@ -5,6 +5,8 @@ import { useMutation, useQuery } from '@tanstack/react-query';
 import { UserInfo } from './types';
 import UserList from './UserList';
 import styles from './UserInfoItem.module.css';
+import { LuLoaderPinwheel } from 'react-icons/lu';
+
 const getUsers = async ({
 	limit,
 	ageOver,
@@ -120,7 +122,10 @@ const App = () => {
 			<h1>Users</h1>
 
 			{query.isLoading ? (
-				'Loading...'
+				<LuLoaderPinwheel
+					size="64"
+					className={styles.spinner}
+				/>
 			) : query.isError ? (
 				<span>Error: {query.error.message}</span>
 			) : (

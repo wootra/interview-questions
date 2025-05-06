@@ -16,11 +16,11 @@ const UserInfoItem = ({ user }: { user: UserInfo }) => {
 			</div>
 			<div className={styles.item}>
 				<span className={styles.label}>Occupation</span>
-				<span className={styles.value}>{occupation.label}</span>
+				<span className={styles.value}>{occupation.title}</span>
 			</div>
 			<div className={styles.item}>
 				<span className={styles.label}>School</span>
-				<span className={styles.value}>{school.label}</span>
+				<span className={styles.value}>{school.name}</span>
 			</div>
 		</div>
 	);
